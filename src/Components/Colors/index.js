@@ -252,7 +252,8 @@ const color = {
     "Blue-Grey-600": "#546E7A",
     "Blue-Grey-700": "#455A64",
     "Blue-Grey-800": "#37474F",
-    "Blue-Grey-900": "#263238"
+    "Blue-Grey-900": "#263238",
+    "White": "#FFFFFF",
 }
 
 export default color;

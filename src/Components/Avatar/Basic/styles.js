@@ -9,9 +9,26 @@ export const Avatar = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 50%;
     text-align: center;
     align-content: center;
+
+    ${({ borderType }) =>
+    borderType === "square" &&
+    `
+      border-radius: 0px;
+  `}
+
+    ${({ borderType }) =>
+    borderType === "squareRounded" &&
+    `
+      border-radius: 5px;
+  `}
+
+    ${({ borderType }) =>
+    borderType === "round" &&
+    `
+      border-radius: 50%;
+  `}
 
     margin: ${props => (props.center ? "0 auto" : "0")};
         ${({ showCursor }) =>
@@ -21,17 +38,24 @@ export const Avatar = styled.div`
         `};
 
     ${({ size }) =>
-      size === "xxl" &&
+      size === "xxxl" &&
       `
         width: 120px;
         height: 120px;
     `}
 
     ${({ size }) =>
-      size === "xl" &&
+      size === "xxl" &&
       `
         width: 96px;
         height: 96px;
+    `}
+
+    ${({ size }) =>
+      size === "xl" &&
+      `
+        width: 72px;
+        height: 72px;
     `}
 
     ${({ size }) =>

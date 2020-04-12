@@ -9,6 +9,7 @@ const Avatar = props => {
       center={props.center}
       image={props.image}
       size={props.size}
+      borderType={props.borderType}
       showCursor={props.showCursor}
       loading={props.loading}
       uploading={100 - props.uploading}
@@ -30,13 +31,16 @@ const Avatar = props => {
 Avatar.defaultProps = {
   content: '',
   showCursor: true,
+  size: 'lg',
+  borderType: 'round',
 };
 
 Avatar.propTypes = {
   image: PropTypes.string,
   center: PropTypes.bool,
   showCursor: PropTypes.bool,
-  size: PropTypes.string
+  size: PropTypes.string,
+  borderType: PropTypes.string,
 };
 
 export default Avatar;
