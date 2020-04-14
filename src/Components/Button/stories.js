@@ -1,43 +1,49 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { Row, Column, Container } from '../Grid';
+import { Column } from '../Grid';
 import Button from '.';
 
-storiesOf('Components|Button/Basic', module)
+storiesOf('Components|Button/Types', module)
   .add('Default', () => (
       <Column alignCenter>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
+                label="Loading" 
+                loading
+            />
+          </Column>
+          <Column padding={10}>
+            <Button 
+                onEvent={e => {console.log(e)}} 
                 label="Default" 
                 outlined
             />
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Primary" 
                 primary
             />
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Secondary" 
                 secondary
             />
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Disabled" 
                 disabled
             />
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Outline" 
                 outline
             />
@@ -48,7 +54,7 @@ storiesOf('Components|Button/Basic', module)
       <Column alignCenter>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default xs" 
                 outlined
                 size={'xs'}
@@ -56,7 +62,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default sm" 
                 outlined
                 size={'sm'}
@@ -64,7 +70,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default md" 
                 outlined
                 size={'md'}
@@ -72,7 +78,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default lg" 
                 outlined
                 size={'lg'}
@@ -84,7 +90,7 @@ storiesOf('Components|Button/Basic', module)
       <Column alignCenter>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default xs square" 
                 outlined
                 size={'xs'}
@@ -93,7 +99,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default sm squareRounded" 
                 outlined
                 size={'sm'}
@@ -102,7 +108,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default md round" 
                 outlined
                 size={'md'}
@@ -111,7 +117,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Default lg round no border" 
                 size={'lg'}
                 borderType={'round'}
@@ -124,7 +130,7 @@ storiesOf('Components|Button/Basic', module)
       <Column alignCenter>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Colored" 
                 borderType={'round'}
                 colored
@@ -134,7 +140,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Colored" 
                 borderType={'round'}
                 colored
@@ -144,7 +150,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Colored" 
                 borderType={'round'}
                 textColor={'Indigo-500'}
@@ -155,7 +161,7 @@ storiesOf('Components|Button/Basic', module)
           </Column>
           <Column padding={10} width={'100%'}>
             <Button 
-                onEvent={e => {action('onEvent', e)}} 
+                onEvent={e => {console.log(e)}} 
                 label="Colored" 
                 borderType={'round'}
                 textColor={'Indigo-500'}

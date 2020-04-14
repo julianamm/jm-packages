@@ -12,22 +12,24 @@ const Button = props => {
   if (props.outline) {
     return (
       <ButtonOutlined
-        id={props.id}
-        outlined={props.outlined}
-        default={props.default}
-        primary={props.primary}
-        secondary={props.secondary}
-        disabled={props.disabled}
-        size={props.size}
-        borderType={props.borderType}
-        noBorder={props.noBorder}
-        textColor={props.textColor}
-        bgColor={props.bgColor}
-        colored={props.colored}
-        active={props.active}
-        fill={props.fill}
+        {...props}
+        disabled={(props.disabled || props.loading)}
+        // id={props.id}
+        // outlined={props.outlined}
+        // default={props.default}
+        // primary={props.primary}
+        // secondary={props.secondary}
+        // disabled={props.disabled}
+        // size={props.size}
+        // borderType={props.borderType}
+        // noBorder={props.noBorder}
+        // textColor={props.textColor}
+        // bgColor={props.bgColor}
+        // colored={props.colored}
+        // active={props.active}
+        // fill={props.fill}
         className={`jm-button ${props.className ? props.className : ''}`}
-        type="button"
+        // type="button"
         onClick={() => {
           props.onEvent({
             type: "OnClick",
@@ -38,29 +40,31 @@ const Button = props => {
           })
         }}>
         {
-          props.label
+          props.loading && props.loadingLabel ? props.loadingLabel : props.label
         }
       </ButtonOutlined>
     )
   }
   return (
     <ButtonBasic
-        id={props.id}
-        outlined={props.outlined}
-        default={props.default}
-        primary={props.primary}
-        secondary={props.secondary}
-        disabled={props.disabled}
-        size={props.size}
-        borderType={props.borderType}
-        noBorder={props.noBorder}
-        textColor={props.textColor}
-        bgColor={props.bgColor}
-        colored={props.colored}
-        active={props.active}
-        fill={props.fill}
+        {...props}
+        disabled={(props.disabled || props.loading)}
+        // id={props.id}
+        // outlined={props.outlined}
+        // default={props.default}
+        // primary={props.primary}
+        // secondary={props.secondary}
+        // disabled={props.disabled}
+        // size={props.size}
+        // borderType={props.borderType}
+        // noBorder={props.noBorder}
+        // textColor={props.textColor}
+        // bgColor={props.bgColor}
+        // colored={props.colored}
+        // active={props.active}
+        // fill={props.fill}
         className={`jm-button ${props.className ? props.className : ''}`}
-        type="button"
+        // type="button"
         onClick={() => {
             if (props.setNewExperience) {
             props.setNewExperience()
@@ -80,7 +84,7 @@ const Button = props => {
             })
         }}>
         {
-            props.label
+          props.loading && props.loadingLabel ? props.loadingLabel : props.label
         }
     </ButtonBasic>
   )
@@ -88,16 +92,21 @@ const Button = props => {
 
 Button.defaultProps = {
     className: '',
+    data: {},
     default: true,
     primary: false,
     secondary: false,
     disabled: false,
     noBorder: false,
     size: 'md',
+    loading: false,
+    loadingLabel: null,
+
 }
 
 Button.propTypes = {
     onEvent: PropTypes.func.isRequired,
+    data: PropTypes.object,
     className: PropTypes.string,
     id:PropTypes.string,
     outlined: PropTypes.bool,
@@ -114,6 +123,8 @@ Button.propTypes = {
     active: PropTypes.bool,
     fill: PropTypes.bool,
     label: PropTypes.string.isRequired,
+    loading: PropTypes.bool,
+    loadingLabel: PropTypes.string,
 }
 
 export default Button;
