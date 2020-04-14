@@ -1,15 +1,42 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Color from "../Colors";
+
+const buttonLoadingAnimation = keyframes`
+  to {
+      transform: rotate(360deg)
+  }
+`
 
 const ButtonBasic = styled.button`
   background-color: ${ props => Color[props.bgColor] ? Color[props.bgColor] : Color["Pink-A400"] };
   border: 1px solid ${ props => Color[props.bgColor] ?  Color[props.bgColor] : Color["Pink-A400"] };
   color: ${ props => Color[props.textColor] ?  Color[props.textColor] : Color["White"] };
+  font-family: Roboto;
   font-size: 14px;
   line-height: 18px;
   text-align: center;
   cursor: pointer;
   padding: 0 30px;
+  position: relative;
+
+  :before {
+    content: '';
+    box-sizing: border-box;
+    position absolute;
+    top:50%;
+    left 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -100000px;
+    border-radius: 50%;
+    border: 2px solid ${Color["Blue-Grey-100"]};
+    border-top-color: ${Color["Blue-200"]};
+    animation: ${buttonLoadingAnimation} .6s linear infinite;
+    ${({ loading }) => loading && `
+      margin-left: -10px;
+    `}
+  }
 
   :focus {
     outline-style: none;
