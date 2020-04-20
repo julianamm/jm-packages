@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonBasic, { ButtonOutlined } from './styles';
+import JMIcon from '../Icon/index';
+import ButtonBasic, { ButtonOutlined, ButtonIconPlan, ButtonIconLabel } from './styles';
 
-const Button = props => {
+const JMButton = props => {
 
   const [closeModal, setCloseModal] = React.useState(props.closeModal);
   React.useEffect(() => {
@@ -14,22 +15,8 @@ const Button = props => {
       <ButtonOutlined
         {...props}
         disabled={(props.disabled || props.loading)}
-        // id={props.id}
-        // outlined={props.outlined}
-        // default={props.default}
-        // primary={props.primary}
-        // secondary={props.secondary}
-        // disabled={props.disabled}
-        // size={props.size}
-        // borderType={props.borderType}
-        // noBorder={props.noBorder}
-        // textColor={props.textColor}
-        // bgColor={props.bgColor}
-        // colored={props.colored}
-        // active={props.active}
-        // fill={props.fill}
         className={`jm-button ${props.className ? props.className : ''}`}
-        // type="button"
+        type="button"
         onClick={() => {
           props.onEvent({
             type: "OnClick",
@@ -45,26 +32,71 @@ const Button = props => {
       </ButtonOutlined>
     )
   }
+  if (props.iconPlan) {
+    return (
+      <ButtonIconPlan
+        {...props}
+        disabled={(props.disabled || props.loading)}
+        className={`jm-button ${props.className ? props.className : ''}`}
+        type="button"
+        onClick={() => {
+          props.onEvent({
+            type: "OnClick",
+            origin: "Button",
+            props: {
+              data: props.data
+            }
+          })
+        }}>
+          <JMIcon 
+            icon={props.icon} 
+            color={props.colorIcon} 
+            sm={props.smIcon}
+            md={props.mdIcon}
+            lg={props.lgIcon}
+            xl={props.xlIcon}
+          />
+      </ButtonIconPlan>
+    )
+  }
+  if (props.iconLabel) {
+    return (
+      <ButtonIconLabel
+        {...props}
+        disabled={(props.disabled || props.loading)}
+        className={`jm-button ${props.className ? props.className : ''}`}
+        type="button"
+        onClick={() => {
+          props.onEvent({
+            type: "OnClick",
+            origin: "Button",
+            props: {
+              data: props.data
+            }
+          })
+        }}>
+          <JMIcon 
+            icon={props.icon} 
+            color={props.colorIcon} 
+            sm={props.smIcon}
+            md={props.mdIcon}
+            lg={props.lgIcon}
+            xl={props.xlIcon}
+          />
+          <span style={{ paddingLeft: "10px" }}>
+            {
+              props.loading && props.loadingLabel ? props.loadingLabel : props.label
+            }
+          </span>
+      </ButtonIconLabel>
+    )
+  }
   return (
     <ButtonBasic
         {...props}
         disabled={(props.disabled || props.loading)}
-        // id={props.id}
-        // outlined={props.outlined}
-        // default={props.default}
-        // primary={props.primary}
-        // secondary={props.secondary}
-        // disabled={props.disabled}
-        // size={props.size}
-        // borderType={props.borderType}
-        // noBorder={props.noBorder}
-        // textColor={props.textColor}
-        // bgColor={props.bgColor}
-        // colored={props.colored}
-        // active={props.active}
-        // fill={props.fill}
         className={`jm-button ${props.className ? props.className : ''}`}
-        // type="button"
+        type="button"
         onClick={() => {
             if (props.setNewExperience) {
             props.setNewExperience()
@@ -90,7 +122,7 @@ const Button = props => {
   )
 }
 
-Button.defaultProps = {
+JMButton.defaultProps = {
     className: '',
     data: {},
     default: true,
@@ -104,7 +136,7 @@ Button.defaultProps = {
 
 }
 
-Button.propTypes = {
+JMButton.propTypes = {
     onEvent: PropTypes.func.isRequired,
     data: PropTypes.object,
     className: PropTypes.string,
@@ -117,6 +149,7 @@ Button.propTypes = {
     size: PropTypes.string,
     borderType: PropTypes.string,
     noBorder: PropTypes.bool,
+    noHover: PropTypes.bool,
     textColor: PropTypes.string,
     bgColor: PropTypes.string,
     colored: PropTypes.bool,
@@ -127,4 +160,4 @@ Button.propTypes = {
     loadingLabel: PropTypes.string,
 }
 
-export default Button;
+export default JMButton;

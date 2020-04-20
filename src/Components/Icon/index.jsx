@@ -92,10 +92,9 @@ JMIcon.defaultProps = {
 }
 export const IconPropTypes = {
     className: PropTypes.string,
-    source: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     color: PropTypes.string,
-    icon: PropTypes.string,
+    icon: PropTypes.string.isRequired,
 }
 
 JMIcon.propTypes = IconPropTypes
