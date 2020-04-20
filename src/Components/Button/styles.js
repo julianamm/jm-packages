@@ -16,7 +16,7 @@ const ButtonBasic = styled.button`
   line-height: 18px;
   text-align: center;
   cursor: pointer;
-  padding: 0 30px;
+  padding: 0 35px;
   position: relative;
 
   :before {
@@ -55,15 +55,15 @@ const ButtonBasic = styled.button`
     `
     :hover {
         background: transparent;
-        border: 2px solid ${Color["Pink-A400"]};
-        color: ${Color["Pink-A400"]};
+        border: 2px solid ${ props => Color[props.bgColor] ? Color[props.bgColor] : Color["Pink-A400"] };
+        color: ${ props => Color[props.bgColor] ? Color[props.bgColor] : Color["Pink-A400"] };
     }
   `}
 
   ${({ size }) =>
   size === 'xs' &&
     `
-    height: 24px;
+    height: 32px;
     font-size: 12px;
     line-height: 16px;
   `}
@@ -71,7 +71,7 @@ const ButtonBasic = styled.button`
   ${({ size }) =>
     size === 'sm' &&
     `
-    height: 32px;
+    height: 40px;
     font-size: 14px;
     line-height: 18px;
   `}
@@ -79,7 +79,7 @@ const ButtonBasic = styled.button`
   ${({ size }) =>
   size === 'md' &&
     `
-    height: 40px;
+    height: 48px;
     font-size: 16px;
     line-height: 20px;
   `}
@@ -87,9 +87,17 @@ const ButtonBasic = styled.button`
   ${({ size }) =>
   size === 'lg' &&
     `
-    height: 48px;
+    height: 56px;
     font-size: 18px;
     line-height: 22px;
+  `}
+
+  ${({ size }) =>
+  size === 'xl' &&
+    `
+    height: 56px;
+    font-size: 24px;
+    line-height: 28px;
   `}
 
   ${({ borderType }) =>
@@ -110,10 +118,28 @@ const ButtonBasic = styled.button`
     border-radius: 25px;
   `}
 
+  ${({ borderType }) =>
+    borderType === 'circle' &&
+    `
+    border-radius: 50%;
+    // height: 56px;
+    // width: 56px;
+    padding 0 10px;
+  `}
+
   ${({ noBorder }) =>
     noBorder &&
     `
     border: none;
+  `}
+
+  ${({ noHover }) =>
+    noHover &&
+    `
+    // pointer-events: none;
+    &:not(.disable):hover {
+        padding: 0 10px !important;
+    }  
   `}
 
   ${({ fill }) =>
@@ -121,6 +147,7 @@ const ButtonBasic = styled.button`
     `
     width: 100%;
     height: 100%;
+    min-height: 32px;
   `}
 
   ${({ primary }) =>
@@ -175,7 +202,7 @@ const ButtonBasic = styled.button`
         background-color: ${ props => Color[props.bgColor] ? Color[props.bgColor] : Color["Pink-A400"] };
     //   border: 5px solid ${Color["Blue-Grey-50"]};
         border: 5px solid ${props => Color[props.bgColor]};
-        padding: 0 35px;
+        padding: 0 40px;
         color: ${ props => Color[props.textColor] ?  Color[props.textColor] : Color["White"] };
     }
   `}
@@ -190,6 +217,16 @@ export const ButtonOutlined = styled(ButtonBasic)`
         border: 1px solid ${ props => Color[props.bgColor] ? Color[props.bgColor] : Color["Pink-A400"] };
         color: ${ props => Color[props.textColor] ?  Color[props.textColor] : Color["White"] };
     }
+`;
+
+export const ButtonIconPlan = styled(ButtonBasic)`
+`;
+
+export const ButtonIconLabel = styled(ButtonBasic)`
+    display: flex;
+    flex-direction: row;
+    align-items: space-around;
+    justify-content: space-around;
 `;
 
 export default ButtonBasic;
