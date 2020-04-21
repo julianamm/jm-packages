@@ -138,7 +138,7 @@ const Container = styled.div`
     `}
 
     ${({ height }) => height && `
-        height: ${height}px;
+        height: ${height};
     `}
 
     ${({ width }) => width && `
